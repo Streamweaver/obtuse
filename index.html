@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="gravity">
+<head>
+  <title>Gravity AngularJS</title>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+<body>
+  <div class="container-fluid" ng-controller="gravityCtrl">
+    <h1>Planetary Data</h1>
+    <div class="col-sm-4" ng-repeat="planet in planets">
+      <h3>{{planet.name}}</h3>
+    </div>
+  </div>
+</body>
+<script src="/assets/js/stellardata.js"></script>
+<script>
+  angular.module('gravity', [])
+    .controller('gravityCtrl', gravityCtrl);
+
+  function gravityCtrl($scope) {
+    $scope.planets = planets;
+  }
+</script>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "obtuse",
+  "version": "0.1.0",
+  "description": "Just a small angularjs app to play around with",
+  "scripts": {
+    "start": "live-server"
+  },
+  "keywords": [],
+  "author": "Scott Turnbull<streamweaver@gmail.com>",
+  "license": "Apache2"
+}
