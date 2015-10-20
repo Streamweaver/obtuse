@@ -16,7 +16,30 @@
 <body>
   <div class="container-fluid" ng-controller="gravityCtrl">
     <h1>Planetary Data</h1>
-    <div class="col-sm-4" ng-repeat="planet in planets">
+<div class="row">
+  <div class="col-sm-5">
+    <button class="btn btn-primary"
+      ng-click="addPlanet()"
+      ng-disabled="!enableAdd()">
+      Add Planet
+    </button>
+    <button class="btn btn-danger"
+      ng-click="clearPlanets()">
+      Clear All
+    </button>
+    <button class="btn btn-warning"
+      ng-click="loadPlanets()">
+      Load Planets
+    </button>
+  </div>
+
+    <div class="col-sm-4 col-sm-offset-3">
+          Search Planets: <input class="form-control" placeholder="Name of Planet" ng-model="searchKey">
+    </div>
+
+
+</div>
+    <div class="col-sm-4" ng-repeat="planet in planets | filter:searchKey">
       <h3>{{planet.name}}</h3>
     </div>
   </div>
@@ -27,7 +50,28 @@
     .controller('gravityCtrl', gravityCtrl);
 
   function gravityCtrl($scope) {
+    var index = planets.length;
     $scope.planets = planets;
+
+    $scope.addPlanet = function() {
+      if ($scope.enableAdd()) {
+        $scope.planets.push(planets[index++])
+      }
+    }
+
+    $scope.clearPlanets = function () {
+      $scope.planets = [];
+      index = 0;
+    }
+
+    $scope.enableAdd = function () {
+      return index < planets.length;
+    }
+
+    $scope.loadPlanets = function () {
+      $scope.planets = planets;
+      index = planets.length;
+    }
   }
 </script>
 </html>
