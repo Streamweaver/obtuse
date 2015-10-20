@@ -1,4 +1,4 @@
-var planets = [
+[
   {
     name: "Mercury",
     surfaceGravity: 0.38,

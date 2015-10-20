@@ -44,14 +44,20 @@
     </div>
   </div>
 </body>
-<script src="/assets/js/stellardata.js"></script>
+
 <script>
   angular.module('gravity', [])
     .controller('gravityCtrl', gravityCtrl);
+  var planets = []
+  function gravityCtrl ($scope, $http) {
+    $http.get('/assets/js/stellardata.js').success(function(data) {
+      alert(data);
+      planets = data;
+    });
 
-  function gravityCtrl($scope) {
     var index = planets.length;
     $scope.planets = planets;
+
 
     $scope.addPlanet = function() {
       if ($scope.enableAdd()) {
